@@ -14,6 +14,24 @@
 		295D08BC193E541D00B26FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295D08BA193E541D00B26FFF /* Main.storyboard */; };
 		295D08BE193E541D00B26FFF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 295D08BD193E541D00B26FFF /* Images.xcassets */; };
 		295D08CA193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D08C9193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift */; };
+		29673D09193EB1CC00C15367 /* photon.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D08193EB1CC00C15367 /* photon.png */; };
+		29673D0A193EB1CC00C15367 /* photon.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D08193EB1CC00C15367 /* photon.png */; };
+		29673D0C193EB84A00C15367 /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D0B193EB84A00C15367 /* asteroid.png */; };
+		29673D0D193EB84A00C15367 /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D0B193EB84A00C15367 /* asteroid.png */; };
+		29673D0F193EC97C00C15367 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D0E193EC97C00C15367 /* enemy.png */; };
+		29673D10193EC97C00C15367 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D0E193EC97C00C15367 /* enemy.png */; };
+		29673D15193ED25C00C15367 /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D14193ED25C00C15367 /* powerup.png */; };
+		29673D16193ED25C00C15367 /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D14193ED25C00C15367 /* powerup.png */; };
+		29673D18193ED81100C15367 /* StarField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D17193ED81100C15367 /* StarField.swift */; };
+		29673D19193ED81100C15367 /* StarField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D17193ED81100C15367 /* StarField.swift */; };
+		29673D1B193EDB3000C15367 /* shootingstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1A193EDB3000C15367 /* shootingstar.png */; };
+		29673D1C193EDB3000C15367 /* shootingstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1A193EDB3000C15367 /* shootingstar.png */; };
+		29673D1F193EDE7200C15367 /* thrust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1D193EDE7200C15367 /* thrust.sks */; };
+		29673D20193EDE7200C15367 /* thrust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1D193EDE7200C15367 /* thrust.sks */; };
+		29673D21193EDE7200C15367 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1E193EDE7200C15367 /* spark.png */; };
+		29673D22193EDE7200C15367 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1E193EDE7200C15367 /* spark.png */; };
+		29673D24193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */; };
+		29673D25193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +56,15 @@
 		295D08C3193E541D00B26FFF /* SpaceRunnerSwiftPortTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceRunnerSwiftPortTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295D08C8193E541D00B26FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		295D08C9193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceRunnerSwiftPortTests.swift; sourceTree = "<group>"; };
+		29673D08193EB1CC00C15367 /* photon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photon.png; sourceTree = "<group>"; };
+		29673D0B193EB84A00C15367 /* asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid.png; sourceTree = "<group>"; };
+		29673D0E193EC97C00C15367 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		29673D14193ED25C00C15367 /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
+		29673D17193ED81100C15367 /* StarField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarField.swift; path = ../StarField.swift; sourceTree = "<group>"; };
+		29673D1A193EDB3000C15367 /* shootingstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootingstar.png; sourceTree = "<group>"; };
+		29673D1D193EDE7200C15367 /* thrust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = thrust.sks; path = ../thrust.sks; sourceTree = "<group>"; };
+		29673D1E193EDE7200C15367 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = ../spark.png; sourceTree = "<group>"; };
+		29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKEmitterNodeExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +106,21 @@
 		295D08AF193E541D00B26FFF /* SpaceRunnerSwiftPort */ = {
 			isa = PBXGroup;
 			children = (
+				29673D1D193EDE7200C15367 /* thrust.sks */,
+				29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */,
+				29673D1E193EDE7200C15367 /* spark.png */,
+				29673D17193ED81100C15367 /* StarField.swift */,
 				295D08B2193E541D00B26FFF /* AppDelegate.swift */,
 				295D08B4193E541D00B26FFF /* GameScene.sks */,
 				295D08B6193E541D00B26FFF /* GameScene.swift */,
+				29673D14193ED25C00C15367 /* powerup.png */,
 				295D08B8193E541D00B26FFF /* GameViewController.swift */,
+				29673D1A193EDB3000C15367 /* shootingstar.png */,
+				29673D0E193EC97C00C15367 /* enemy.png */,
+				29673D0B193EB84A00C15367 /* asteroid.png */,
 				295D08BA193E541D00B26FFF /* Main.storyboard */,
 				295D08BD193E541D00B26FFF /* Images.xcassets */,
+				29673D08193EB1CC00C15367 /* photon.png */,
 				295D08B0193E541D00B26FFF /* Supporting Files */,
 			);
 			path = SpaceRunnerSwiftPort;
@@ -195,8 +231,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29673D1F193EDE7200C15367 /* thrust.sks in Resources */,
+				29673D1B193EDB3000C15367 /* shootingstar.png in Resources */,
 				295D08BE193E541D00B26FFF /* Images.xcassets in Resources */,
+				29673D09193EB1CC00C15367 /* photon.png in Resources */,
+				29673D0F193EC97C00C15367 /* enemy.png in Resources */,
+				29673D21193EDE7200C15367 /* spark.png in Resources */,
 				295D08B5193E541D00B26FFF /* GameScene.sks in Resources */,
+				29673D0C193EB84A00C15367 /* asteroid.png in Resources */,
+				29673D15193ED25C00C15367 /* powerup.png in Resources */,
 				295D08BC193E541D00B26FFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +248,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29673D16193ED25C00C15367 /* powerup.png in Resources */,
+				29673D0D193EB84A00C15367 /* asteroid.png in Resources */,
+				29673D0A193EB1CC00C15367 /* photon.png in Resources */,
+				29673D22193EDE7200C15367 /* spark.png in Resources */,
+				29673D20193EDE7200C15367 /* thrust.sks in Resources */,
+				29673D1C193EDB3000C15367 /* shootingstar.png in Resources */,
+				29673D10193EC97C00C15367 /* enemy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29673D18193ED81100C15367 /* StarField.swift in Sources */,
 				295D08B7193E541D00B26FFF /* GameScene.swift in Sources */,
 				295D08B9193E541D00B26FFF /* GameViewController.swift in Sources */,
+				29673D24193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */,
 				295D08B3193E541D00B26FFF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +277,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29673D19193ED81100C15367 /* StarField.swift in Sources */,
+				29673D25193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */,
 				295D08CA193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +461,7 @@
 				295D08CF193E541D00B26FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		295D08D0193E541D00B26FFF /* Build configuration list for PBXNativeTarget "SpaceRunnerSwiftPortTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +470,7 @@
 				295D08D2193E541D00B26FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
