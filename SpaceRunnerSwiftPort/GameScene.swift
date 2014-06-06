@@ -13,6 +13,7 @@ class GameScene: SKScene {
     var lastUpdateTime = NSTimeInterval()
     var lastShotFired = NSTimeInterval()
     var shipFireRate : CGFloat = 0.5
+    var easyMode : Bool = true
     
     func ca_nodeWithFile(named: NSString) -> SKEmitterNode {
         var baseName : NSString = named.stringByDeletingPathExtension
@@ -44,7 +45,9 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        self.shipTouch = touches.anyObject() as UITouch
+        if touches.count > 0 {
+            self.shipTouch = touches.anyObject() as UITouch
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -61,11 +64,20 @@ class GameScene: SKScene {
                     self.lastShotFired = currentTime
                 }
             }
-            var ship : SKNode = self.childNodeWithName("ship")
-            self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
-            //ship.position = self.shipTouch.locationInNode(self)
+            if self.childNodeWithName("ship") {
+                var ship : SKNode = self.childNodeWithName("ship")
+                self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
+                //ship.position = self.shipTouch.locationInNode(self)
+            }
         }
-        if arc4random_uniform(1000) <= 15 {
+        var thingProb : UInt32
+        if self.easyMode {
+            thingProb = 15
+        } else {
+            thingProb = 30
+        }
+        
+        if arc4random_uniform(1000) <= thingProb {
             self.dropthing()
         }
         self.checkCollisions()
@@ -101,11 +113,14 @@ class GameScene: SKScene {
     func dropthing() {
         var dice : UInt32 = arc4random_uniform(100)
         if dice < 5 {
-            self.dropPowerUp()
+            //self.dropPowerUp()
+            dropPowerUp()
         } else if dice < 35 {
-            self.dropEnemyShip()
+            //self.dropEnemyShip()
+            dropEnemyShip()
         } else {
-            self.dropAsteroid()
+            //self.dropAsteroid()
+            dropAsteroid()
         }
     }
     
@@ -131,7 +146,7 @@ class GameScene: SKScene {
     
     func dropEnemyShip() {
         var sideSize = 30.0
-        var startX = CGFloat(arc4random_uniform(UInt32(self.size.width) - 40 ) ) + 20.0
+        var startX = CGFloat(arc4random_uniform(UInt32(self.size.width) - 60 ) ) + CGFloat(20.0)
         var startY = self.size.height + sideSize
         var endY = 0 - sideSize
         var enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
@@ -140,10 +155,11 @@ class GameScene: SKScene {
         enemy.name = "enemy"
         self.addChild(enemy)
         var move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
-        //var shipPath : CGPathRef = self.buildEnemyShipMovementPath()
-        //var followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
+        var shipPath : CGPathRef = self.buildEnemyShipMovementPath()
+        var followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
         var remove :SKAction = SKAction.removeFromParent()
-        var all : SKAction = SKAction.sequence([move, remove])
+        var all : SKAction = SKAction.sequence([followPath, remove])
+        enemy.runAction(all)
     }
     
     func buildEnemyShipMovementPath() -> CGPathRef {

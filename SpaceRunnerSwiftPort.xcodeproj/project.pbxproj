@@ -19,6 +19,12 @@
 		2905338A193FA0C400D52BBD /* shipExplode.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 29053388193FA0C400D52BBD /* shipExplode.m4a */; };
 		2905338C193FA12F00D52BBD /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2905338B193FA12F00D52BBD /* enemy.png */; };
 		2905338D193FA12F00D52BBD /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2905338B193FA12F00D52BBD /* enemy.png */; };
+		2905338F19423DF800D52BBD /* OpeningScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905338E19423DF800D52BBD /* OpeningScene.swift */; };
+		2905339019423DF800D52BBD /* OpeningScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905338E19423DF800D52BBD /* OpeningScene.swift */; };
+		29053392194268FE00D52BBD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29053391194268FE00D52BBD /* MenuViewController.swift */; };
+		29053393194268FE00D52BBD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29053391194268FE00D52BBD /* MenuViewController.swift */; };
+		29053395194282AB00D52BBD /* OpeningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29053394194282AB00D52BBD /* OpeningScene.sks */; };
+		29053396194282AB00D52BBD /* OpeningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29053394194282AB00D52BBD /* OpeningScene.sks */; };
 		295D08B3193E541D00B26FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D08B2193E541D00B26FFF /* AppDelegate.swift */; };
 		295D08B5193E541D00B26FFF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 295D08B4193E541D00B26FFF /* GameScene.sks */; };
 		295D08B7193E541D00B26FFF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D08B6193E541D00B26FFF /* GameScene.swift */; };
@@ -61,6 +67,9 @@
 		29053385193FA0BB00D52BBD /* obstacleExplode.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = obstacleExplode.m4a; sourceTree = "<group>"; };
 		29053388193FA0C400D52BBD /* shipExplode.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shipExplode.m4a; sourceTree = "<group>"; };
 		2905338B193FA12F00D52BBD /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		2905338E19423DF800D52BBD /* OpeningScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningScene.swift; sourceTree = "<group>"; };
+		29053391194268FE00D52BBD /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		29053394194282AB00D52BBD /* OpeningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OpeningScene.sks; sourceTree = "<group>"; };
 		295D08AD193E541D00B26FFF /* SpaceRunnerSwiftPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceRunnerSwiftPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		295D08B1193E541D00B26FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		295D08B2193E541D00B26FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +151,9 @@
 				295D08BD193E541D00B26FFF /* Images.xcassets */,
 				29673D08193EB1CC00C15367 /* photon.png */,
 				295D08B0193E541D00B26FFF /* Supporting Files */,
+				2905338E19423DF800D52BBD /* OpeningScene.swift */,
+				29053391194268FE00D52BBD /* MenuViewController.swift */,
+				29053394194282AB00D52BBD /* OpeningScene.sks */,
 			);
 			path = SpaceRunnerSwiftPort;
 			sourceTree = "<group>";
@@ -264,6 +276,7 @@
 				29673D0C193EB84A00C15367 /* asteroid.png in Resources */,
 				29673D15193ED25C00C15367 /* powerup.png in Resources */,
 				29053389193FA0C400D52BBD /* shipExplode.m4a in Resources */,
+				29053395194282AB00D52BBD /* OpeningScene.sks in Resources */,
 				295D08BC193E541D00B26FFF /* Main.storyboard in Resources */,
 				29053383193FA0B200D52BBD /* shoot.m4a in Resources */,
 			);
@@ -274,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2905338A193FA0C400D52BBD /* shipExplode.m4a in Resources */,
+				29053396194282AB00D52BBD /* OpeningScene.sks in Resources */,
 				29053384193FA0B200D52BBD /* shoot.m4a in Resources */,
 				2905338D193FA12F00D52BBD /* enemy.png in Resources */,
 				29673D16193ED25C00C15367 /* powerup.png in Resources */,
@@ -298,8 +312,10 @@
 				29673D18193ED81100C15367 /* StarField.swift in Sources */,
 				295D08B7193E541D00B26FFF /* GameScene.swift in Sources */,
 				295D08B9193E541D00B26FFF /* GameViewController.swift in Sources */,
+				29053392194268FE00D52BBD /* MenuViewController.swift in Sources */,
 				29673D24193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */,
 				295D08B3193E541D00B26FFF /* AppDelegate.swift in Sources */,
+				2905338F19423DF800D52BBD /* OpeningScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +324,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				29673D19193ED81100C15367 /* StarField.swift in Sources */,
+				29053393194268FE00D52BBD /* MenuViewController.swift in Sources */,
 				29673D25193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */,
 				295D08CA193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift in Sources */,
+				2905339019423DF800D52BBD /* OpeningScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
