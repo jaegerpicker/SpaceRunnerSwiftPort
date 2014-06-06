@@ -29,13 +29,15 @@ class MenuController : UIViewController {
         super.viewDidAppear(animated)
         self.demoView.frame = self.view.bounds
         var scene : SKScene = SKScene()
-        scene.backgroundColor = UIColor.blackColor()
-        scene.scaleMode = SKSceneScaleMode.AspectFill
-        var starField : StarField = StarField()
-        scene.addChild(starField as SKNode)
-        self.demoView.ignoresSiblingOrder = true
-        self.demoView.presentScene(scene)
-        self.view.insertSubview(self.demoView, atIndex: 0)
+        if let scene : MenuScene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
+            scene.backgroundColor = UIColor.blackColor()
+            scene.scaleMode = SKSceneScaleMode.AspectFill
+            var starField : StarField = StarField()
+            scene.addChild(starField as SKNode)
+            self.demoView.ignoresSiblingOrder = true
+            self.demoView.presentScene(scene)
+            self.view.insertSubview(self.demoView, atIndex: 0)
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {

@@ -306,11 +306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameViewController.swift"
-            timestampString = "423784468.758847"
+            timestampString = "423791371.152468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -322,11 +322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameViewController.swift"
-            timestampString = "423784468.758847"
+            timestampString = "423791371.152468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -338,11 +338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameViewController.swift"
-            timestampString = "423789129.142555"
+            timestampString = "423791371.152468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -354,13 +354,73 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameViewController.swift"
-            timestampString = "423789138.803357"
+            timestampString = "423791371.152468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceRunnerSwiftPort/MenuViewController.swift"
+            timestampString = "423791428.366567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.MenuController.viewDidAppear (SpaceRunnerSwiftPort.MenuController)(Swift.Bool) -&gt; ()"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
+                  timestampString = "423791439.719146"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.MenuController.viewDidAppear (SpaceRunnerSwiftPort.MenuController)(Swift.Bool) -&gt; ()"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
+                  timestampString = "423791439.71936"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1988">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.MenuController.viewDidAppear (SpaceRunnerSwiftPort.MenuController)(Swift.Bool) -&gt; ()"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
+                  timestampString = "423791439.719488"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "2012">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
