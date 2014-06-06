@@ -13,9 +13,9 @@ class StarField : SKNode {
     init() {
         super.init()
         if self != nil {
-            var update :SKAction = SKAction.runBlock({[unowned self] () -> Void in
+            var update :SKAction = SKAction.runBlock({[weak self] () -> Void in
                 if arc4random_uniform(10) < 3 {
-                    self.launchStar()
+                    self?.launchStar()
                 }
             })
             var delay : SKAction = SKAction.waitForDuration(0.01)

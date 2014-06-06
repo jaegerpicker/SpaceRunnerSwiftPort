@@ -56,8 +56,10 @@ class GameScene: SKScene {
         
         if self.shipTouch != nil {
             if currentTime - self.lastShotFired > self.shipFireRate {
-                self.shoot()
-                self.lastShotFired = currentTime
+                if self.childNodeWithName("ship") {
+                    self.shoot()
+                    self.lastShotFired = currentTime
+                }
             }
             var ship : SKNode = self.childNodeWithName("ship")
             self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
@@ -100,7 +102,7 @@ class GameScene: SKScene {
         var dice : UInt32 = arc4random_uniform(100)
         if dice < 5 {
             self.dropPowerUp()
-        } else if dice < 15 {
+        } else if dice < 35 {
             self.dropEnemyShip()
         } else {
             self.dropAsteroid()
@@ -131,15 +133,17 @@ class GameScene: SKScene {
         var sideSize = 30.0
         var startX = CGFloat(arc4random_uniform(UInt32(self.size.width) - 40 ) ) + 20.0
         var startY = self.size.height + sideSize
+        var endY = 0 - sideSize
         var enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
         enemy.size = CGSizeMake(sideSize, sideSize)
         enemy.position = CGPointMake(startX, startY)
-        enemy.name = "obstackle"
+        enemy.name = "enemy"
         self.addChild(enemy)
-        var shipPath : CGPathRef = self.buildEnemyShipMovementPath()
-        var followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
+        var move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
+        //var shipPath : CGPathRef = self.buildEnemyShipMovementPath()
+        //var followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
         var remove :SKAction = SKAction.removeFromParent()
-        var all : SKAction = SKAction.sequence([followPath, remove])
+        var all : SKAction = SKAction.sequence([move, remove])
     }
     
     func buildEnemyShipMovementPath() -> CGPathRef {
@@ -172,6 +176,7 @@ class GameScene: SKScene {
         bezierPath.addCurveToPoint(CGPointMake(-2.5, -644.5),
             controlPoint1: CGPointMake(-5.2, -578.93),
             controlPoint2: CGPointMake(-2.5, -644.5));
+        bezierPath.stroke()
         return bezierPath.CGPath
     }
     
@@ -216,7 +221,7 @@ class GameScene: SKScene {
             })
         self.enumerateChildNodesWithName("obstackle", usingBlock: {(obstackle: SKNode!, stop : CMutablePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(obstackle) {
-                self.shipTouch.delete(self)
+                //self.shipTouch.delete(self)
                 ship.removeFromParent()
                 obstackle.removeFromParent()
             }

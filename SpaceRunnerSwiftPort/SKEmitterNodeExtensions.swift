@@ -19,4 +19,16 @@ extension SKEmitterNode {
         var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as SKEmitterNode
         return node
     }
+    
+    func ca_dieOutInDuration(duration: NSTimeInterval) {
+        var firstWait : SKAction = SKAction.waitForDuration(duration)
+        unowned let weakSelf : SKEmitterNode = self
+        var stop : SKAction = SKAction.runBlock({() -> Void in
+            weakSelf.particleBirthRate = 0
+        })
+        var secondWait : SKAction = SKAction.waitForDuration(weakSelf.particleLifetime)
+        var remove : SKAction = SKAction.removeFromParent()
+        var dieOut : SKAction = SKAction.sequence([firstWait, stop, secondWait, remove])
+        weakSelf.runAction(dieOut)
+    }
 }

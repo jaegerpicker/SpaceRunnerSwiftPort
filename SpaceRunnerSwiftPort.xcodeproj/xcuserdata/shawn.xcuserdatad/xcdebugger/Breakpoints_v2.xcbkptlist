@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423598926.311951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "shoot()"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423760614.375347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "GameScene"
             landmarkType = "3">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423760614.375347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "dropAsteroid()"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423760614.375347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "checkCollisions()"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423598926.311951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "dropEnemyShip()"
             landmarkType = "5">
          </BreakpointContent>
@@ -136,13 +136,135 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/GameScene.swift"
-            timestampString = "423552354.504981"
+            timestampString = "423598926.311951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "dropthing()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StarField.swift"
+            timestampString = "423595634.933646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "init()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.StarField.init (SpaceRunnerSwiftPort.StarField.Type)() -&gt; SpaceRunnerSwiftPort.StarField"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/StarField.swift"
+                  timestampString = "423595640.550752"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.StarField.(init (SpaceRunnerSwiftPort.StarField.Type) -&gt; () -&gt; SpaceRunnerSwiftPort.StarField).(closure #1)"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/StarField.swift"
+                  timestampString = "423595640.550996"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned () -&gt; (@unowned ()) to @callee_unowned @objc_block () -&gt; (@unowned ())"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/StarField.swift"
+                  timestampString = "423595640.551126"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceRunnerSwiftPort/SKEmitterNodeExtensions.swift"
+            timestampString = "423600506.91817"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "ca_dieOutInDuration(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceRunnerSwiftPort/GameScene.swift"
+            timestampString = "423760614.375347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "buildEnemyShipMovementPath()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.GameScene.buildEnemyShipMovementPath (SpaceRunnerSwiftPort.GameScene)() -&gt; ObjectiveC.CGPath"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/GameScene.swift"
+                  timestampString = "423760688.079096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "1604">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceRunnerSwiftPort.GameScene.buildEnemyShipMovementPath (SpaceRunnerSwiftPort.GameScene)() -&gt; ObjectiveC.CGPath"
+                  moduleName = "SpaceRunnerSwiftPort"
+                  urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/GameScene.swift"
+                  timestampString = "423760688.079362"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "1704">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
