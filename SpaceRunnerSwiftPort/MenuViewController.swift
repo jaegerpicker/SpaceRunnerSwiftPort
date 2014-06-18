@@ -28,7 +28,6 @@ class MenuController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.demoView.frame = self.view.bounds
-        var scene : SKScene = SKScene()
         if let scene : MenuScene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
             scene.backgroundColor = UIColor.blackColor()
             scene.scaleMode = SKSceneScaleMode.AspectFill
