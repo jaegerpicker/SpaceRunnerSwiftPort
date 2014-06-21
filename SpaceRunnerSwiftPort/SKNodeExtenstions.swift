@@ -16,7 +16,7 @@ extension SKNode {
         var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        if let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as? GameScene
+        if let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as? SKScene
         {
             archiver.finishDecoding()
             return scene

@@ -9,4 +9,14 @@ import SpriteKit
 
 class MenuScene : SKScene {
     
+    override func didMoveToView(view: SKView!) {
+        self.backgroundColor = UIColor.blackColor()
+        var sf : StarField = StarField()
+        self.addChild(sf as SKNode)
+        var ship : SKSpriteNode = SKSpriteNode(imageNamed: "spaceship")
+        self.addChild(ship)
+        view.ignoresSiblingOrder = true
+
+    }
+    
 }
