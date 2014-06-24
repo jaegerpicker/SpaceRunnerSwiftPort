@@ -382,7 +382,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/MenuViewController.swift"
@@ -395,13 +395,13 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SpaceRunnerSwiftPort.MenuController.prepareForSegue (SpaceRunnerSwiftPort.MenuController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIStoryboardSegue&gt;, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SpaceRunnerSwiftPort"
                   urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
-                  timestampString = "425142453.555829"
+                  timestampString = "425261281.455119"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -409,13 +409,13 @@
                   offsetFromSymbolStart = "508">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SpaceRunnerSwiftPort.MenuController.prepareForSegue (SpaceRunnerSwiftPort.MenuController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIStoryboardSegue&gt;, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SpaceRunnerSwiftPort"
                   urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
-                  timestampString = "425142453.555966"
+                  timestampString = "425261281.455509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -428,7 +428,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceRunnerSwiftPort/MenuViewController.swift"
@@ -441,13 +441,13 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SpaceRunnerSwiftPort.MenuController.prepareForSegue (SpaceRunnerSwiftPort.MenuController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIStoryboardSegue&gt;, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SpaceRunnerSwiftPort"
                   urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
-                  timestampString = "425142453.600946"
+                  timestampString = "425261281.457546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -455,13 +455,13 @@
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SpaceRunnerSwiftPort.MenuController.prepareForSegue (SpaceRunnerSwiftPort.MenuController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIStoryboardSegue&gt;, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SpaceRunnerSwiftPort"
                   urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
-                  timestampString = "425142453.601169"
+                  timestampString = "425261281.457695"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -469,13 +469,13 @@
                   offsetFromSymbolStart = "1080">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SpaceRunnerSwiftPort.MenuController.prepareForSegue (SpaceRunnerSwiftPort.MenuController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIStoryboardSegue&gt;, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SpaceRunnerSwiftPort"
                   urlString = "file:///Users/shawn/Documents/CODE/SpaceRunnerSwiftPort/SpaceRunnerSwiftPort/MenuViewController.swift"
-                  timestampString = "425142453.601362"
+                  timestampString = "425261281.457826"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -513,6 +513,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
+            landmarkName = "didMoveToView(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceRunnerSwiftPort/OpeningScene.swift"
+            timestampString = "425264876.200646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "didMoveToView(_:)"
             landmarkType = "5">
          </BreakpointContent>

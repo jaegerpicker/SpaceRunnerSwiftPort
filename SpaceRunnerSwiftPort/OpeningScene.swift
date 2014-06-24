@@ -26,7 +26,7 @@ class OpeningScene : SKScene {
         view.ignoresSiblingOrder = true
         self.slantedView.opaque = false
         self.slantedView.backgroundColor = UIColor.clearColor()
-        self.view.addSubview(self.slantedView)
+        view.addSubview(self.slantedView)
         var transform : CATransform3D  = CATransform3DIdentity
         transform.m34 = -1.0/500.0
         transform = CATransform3DRotate(transform, (45.0 * M_PI / 180.0), 1.0, 0.0, 0.0)
@@ -63,8 +63,8 @@ class OpeningScene : SKScene {
                 }
             })
         var endSceneSelector : Selector = "endScene:"
-        self.tapGesture = UITapGestureRecognizer(target: self, action: endSceneSelector)
-        self.view.addGestureRecognizer(self.tapGesture)
+        self.tapGesture = UITapGestureRecognizer(target: self, action: "endScene")
+        view.addGestureRecognizer(self.tapGesture)
     }
     
     override func willMoveFromView(view: SKView!) {
