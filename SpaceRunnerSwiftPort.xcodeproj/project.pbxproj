@@ -54,6 +54,10 @@
 		29673D22193EDE7200C15367 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 29673D1E193EDE7200C15367 /* spark.png */; };
 		29673D24193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */; };
 		29673D25193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */; };
+		29DB0ABF196B62A900DABC03 /* GameOverNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DB0ABE196B62A900DABC03 /* GameOverNode.swift */; };
+		29DB0AC0196B62A900DABC03 /* GameOverNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DB0ABE196B62A900DABC03 /* GameOverNode.swift */; };
+		29DB0AC2196B665500DABC03 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DB0AC1196B665500DABC03 /* HudNode.swift */; };
+		29DB0AC3196B665500DABC03 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DB0AC1196B665500DABC03 /* HudNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,8 @@
 		29673D1D193EDE7200C15367 /* thrust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = thrust.sks; path = ../thrust.sks; sourceTree = "<group>"; };
 		29673D1E193EDE7200C15367 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = ../spark.png; sourceTree = "<group>"; };
 		29673D23193EE01D00C15367 /* SKEmitterNodeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKEmitterNodeExtensions.swift; sourceTree = "<group>"; };
+		29DB0ABE196B62A900DABC03 /* GameOverNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverNode.swift; sourceTree = "<group>"; };
+		29DB0AC1196B665500DABC03 /* HudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 				29053394194282AB00D52BBD /* OpeningScene.sks */,
 				29272D921942887F001D4A07 /* MenuScene.swift */,
 				29272D951942894D001D4A07 /* SKNodeExtenstions.swift */,
+				29DB0ABE196B62A900DABC03 /* GameOverNode.swift */,
+				29DB0AC1196B665500DABC03 /* HudNode.swift */,
 			);
 			path = SpaceRunnerSwiftPort;
 			sourceTree = "<group>";
@@ -331,7 +339,9 @@
 				29272D931942887F001D4A07 /* MenuScene.swift in Sources */,
 				295D08B3193E541D00B26FFF /* AppDelegate.swift in Sources */,
 				29272D961942894D001D4A07 /* SKNodeExtenstions.swift in Sources */,
+				29DB0AC2196B665500DABC03 /* HudNode.swift in Sources */,
 				2905338F19423DF800D52BBD /* OpeningScene.swift in Sources */,
+				29DB0ABF196B62A900DABC03 /* GameOverNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +350,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				29673D19193ED81100C15367 /* StarField.swift in Sources */,
+				29DB0AC0196B62A900DABC03 /* GameOverNode.swift in Sources */,
 				29272D971942894D001D4A07 /* SKNodeExtenstions.swift in Sources */,
 				29053393194268FE00D52BBD /* MenuViewController.swift in Sources */,
+				29DB0AC3196B665500DABC03 /* HudNode.swift in Sources */,
 				29673D25193EE01D00C15367 /* SKEmitterNodeExtensions.swift in Sources */,
 				29272D941942887F001D4A07 /* MenuScene.swift in Sources */,
 				295D08CA193E541D00B26FFF /* SpaceRunnerSwiftPortTests.swift in Sources */,

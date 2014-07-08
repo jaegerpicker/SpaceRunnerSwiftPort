@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var lastShotFired = NSTimeInterval()
     var shipFireRate : CGFloat = 0.5
     var easyMode : Bool = true
+    var tapGesture : UITapGestureRecognizer = UITapGestureRecognizer()
     
     func ca_nodeWithFile(named: NSString) -> SKEmitterNode {
         var baseName : NSString = named.stringByDeletingPathExtension
@@ -199,10 +200,19 @@ class GameScene: SKScene {
     func dropAsteroid()
     {
         var ran = arc4random_uniform(30)
+        NSLog("ran: %d", ran)
         var sideSize = 15.0 + CGFloat(ran)
+        NSLog("sideSize: %d", sideSize)
         var maxX = UInt32(self.size.width)
+        NSLog("maxX: %d", maxX)
         var quarterX = maxX / 4
-        var startX = arc4random_uniform(maxX + (quarterX * 2)) - quarterX
+        NSLog("quarterX: %d", quarterX)
+        var maxPlusQuarterXSq = maxX + (quarterX * 2)
+        NSLog("maxPlus: %d", maxPlusQuarterXSq)
+        var rando = arc4random_uniform(maxPlusQuarterXSq)
+        NSLog("random: %d", rando)
+        var startX =  ((rando > quarterX) ? (rando - quarterX) : 1)
+        NSLog("startX: %d", startX)
         var startY = self.size.height + sideSize
         var endX = arc4random_uniform(maxX)
         var endY = 0 - sideSize
@@ -210,6 +220,7 @@ class GameScene: SKScene {
         asteroid.size = CGSizeMake(sideSize, sideSize)
         asteroid.position = CGPointMake(CGFloat(startX), startY)
         asteroid.name = "obstackle"
+        NSLog("asteriod.name: %s", asteroid.name)
         self.addChild(asteroid)
         var move : SKAction = SKAction.moveTo(CGPointMake(CGFloat(endX), endY), duration: 3+CGFloat(arc4random_uniform(4)))
         var remove : SKAction = SKAction.removeFromParent()
@@ -250,5 +261,30 @@ class GameScene: SKScene {
                 })
             })
         
+    }
+    
+    func tapped() {
+        
+    }
+    
+    func endGame() {
+        self.tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
+        self.view.addGestureRecognizer(self.tapGesture)
+        
+        
+        var defaults : NSUserDefaults = NSUserDefaults()
+        defaults.registerDefaults(["highscore":0])
+        var score : NSNumber = defaults.valueForKey("highscore") as NSNumber
+        var node : GameOverNode = GameOverNode()
+        node.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+        self.addChild(node)
+        
+        RCWHUDNode *hud = (RCWHUDNode *)[self childNodeWithName:@"hud"];
+        [hud endGame];
+
+        
+        if (score.integerValue < hud.score) {
+            defaults.setValue(hud.score, forKey: "highScore");
+        }
     }
 }
