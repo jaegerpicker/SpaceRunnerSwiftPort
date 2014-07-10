@@ -144,8 +144,8 @@ class HudNode : SKNode {
         var update : SKAction = SKAction.runBlock({() -> Void in
             var now : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
             var elapsed : NSTimeInterval = now - startTime
-            weakself!.elapsedTime = elapsed
-            elapsedValue.text = weakself!.timeFormatter.stringFromNumber(elapsed)
+            weakself!. = elapsed
+            elapsedValue.text = weakself!.timeFormatter!.stringFromNumber(elapsed)
         })
         var delay : SKAction = SKAction.waitForDuration(0.05)
         var updateAndDelay = SKAction.sequence([update, delay])
@@ -165,7 +165,7 @@ class HudNode : SKNode {
     }
     
     func showPowerupTimer(time : NSTimeInterval) {
-        SKNode *powerupGroup = [self childNodeWithName:@"powerupGroup"];
+        SKNode *powerupGroup = [self childNodeWithName:"powerupGroup"];
         SKLabelNode *powerupValue =
         (SKLabelNode *)[powerupGroup childNodeWithName:@"powerupValue"];
         
