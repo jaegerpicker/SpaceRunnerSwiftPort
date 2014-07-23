@@ -29,7 +29,7 @@ class OpeningScene : SKScene {
         view.addSubview(self.slantedView)
         var transform : CATransform3D  = CATransform3DIdentity
         transform.m34 = -1.0/500.0
-        transform = CATransform3DRotate(transform, (45.0 * M_PI / 180.0), 1.0, 0.0, 0.0)
+        transform = CATransform3DRotate(transform, (45.0 * CGFloat(M_PI) / 180.0), 1.0, 0.0, 0.0)
         self.slantedView.layer.transform = transform
         self.textView.frame = CGRectInset(self.view.bounds, 30.0, 0.0)
         self.textView.opaque = false
@@ -49,7 +49,8 @@ class OpeningScene : SKScene {
         self.slantedView.addSubview(self.textView)
         var gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = self.view.bounds
-        gradient.colors = [UIColor.clearColor().CGColor, UIColor.whiteColor().CGColor]
+        let arrayColors : NSArray = [UIColor.clearColor().CGColor as AnyObject, UIColor.whiteColor().CGColor as AnyObject]
+        gradient.colors = arrayColors
         gradient.startPoint = CGPointMake(0.5, 0.0)
         gradient.endPoint = CGPointMake(0.5, 0.20)
         self.slantedView.layer.mask = gradient
@@ -77,7 +78,7 @@ class OpeningScene : SKScene {
             self.textView.alpha = 0.0
             }, completion: {(b: Bool) -> Void in
                 self.textView.layer.removeAllAnimations()
-                assert(self.callback != nil)
+                //assert(self.callback != nil)
                 self.callback()
             })
         

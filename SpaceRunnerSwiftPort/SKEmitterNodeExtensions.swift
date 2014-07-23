@@ -22,13 +22,13 @@ extension SKEmitterNode {
     
     func ca_dieOutInDuration(duration: NSTimeInterval) {
         var firstWait : SKAction = SKAction.waitForDuration(duration)
-        unowned let weakSelf : SKEmitterNode = self
+        weak var weakSelf : SKEmitterNode? = self
         var stop : SKAction = SKAction.runBlock({() -> Void in
-            weakSelf.particleBirthRate = 0
+            weakSelf!.particleBirthRate = 0
         })
-        var secondWait : SKAction = SKAction.waitForDuration(weakSelf.particleLifetime)
+        var secondWait : SKAction = SKAction.waitForDuration(NSTimeInterval(weakSelf!.particleLifetime))
         var remove : SKAction = SKAction.removeFromParent()
         var dieOut : SKAction = SKAction.sequence([firstWait, stop, secondWait, remove])
-        weakSelf.runAction(dieOut)
+        weakSelf!.runAction(dieOut)
     }
 }

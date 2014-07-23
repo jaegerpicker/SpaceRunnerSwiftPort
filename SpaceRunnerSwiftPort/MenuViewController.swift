@@ -11,9 +11,9 @@ import SpriteKit
 class MenuController : UIViewController {
     var diff : UISegmentedControl = UISegmentedControl()
     var demoView : SKView = SKView()
-    @IBOutlet var highScoreLabel : UILabel = UILabel()
-    @IBOutlet var difficulty : UISegmentedControl = UISegmentedControl()
-    @IBOutlet var playButton : UIButton = UIButton()
+    @IBOutlet var highScoreLabel : UILabel? = UILabel()
+    @IBOutlet var difficulty : UISegmentedControl? = UISegmentedControl()
+    @IBOutlet var playButton : UIButton? = UIButton()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,7 +23,7 @@ class MenuController : UIViewController {
         defaults.registerDefaults(["highscore":0])
         var score : NSNumber = defaults.valueForKey("highscore") as NSNumber
         var scoreString : NSString = "High Score: \(scoreFormatter.stringFromNumber(score))"
-        self.highScoreLabel.text = scoreString
+        self.highScoreLabel!.text = scoreString
         
     }
     
@@ -49,7 +49,7 @@ class MenuController : UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
         if segue.identifier == "PlayGame" {
             var gc : GameViewController = segue.destinationViewController as GameViewController
-            gc.easyMode = difficulty.selected
+            gc.easyMode = difficulty!.selected
         }
     }
 }

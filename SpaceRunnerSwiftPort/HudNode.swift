@@ -11,8 +11,8 @@ import SpriteKit
 class HudNode : SKNode {
     var elapsedTime : NSTimeInterval = 0.0
     var score : NSInteger = 0
-    var scoreFormatter : NSNumberFormatter
-    var timeFormatter : NSNumberFormatter
+    var scoreFormatter : NSNumberFormatter = NSNumberFormatter()
+    var timeFormatter : NSNumberFormatter = NSNumberFormatter()
     
     init() {
         super.init()
@@ -119,7 +119,7 @@ class HudNode : SKNode {
         groupSize = powerupGroup.calculateAccumulatedFrame().size
         powerupGroup.position = CGPointMake(0,sceneSize.height/2 - groupSize.height)
         
-        var elapsedGroup : SKNode = self.childNodeWithName("elapsedgroup")
+        var elapsedGroup : SKNode = self.childNodeWithName("elapsedGroup")
         groupSize = elapsedGroup.calculateAccumulatedFrame().size
         elapsedGroup.position = CGPointMake(sceneSize.width/2 - 20, sceneSize.height/2 - groupSize.height)
     }
@@ -140,12 +140,12 @@ class HudNode : SKNode {
     func startGame() {
         var startTime : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
         var elapsedValue : SKLabelNode = self.childNodeWithName("elapsedGroup/elapsedValue") as SKLabelNode
-        weak var weakself : SKNode? = self
+        weak var weakself : HudNode? = self
         var update : SKAction = SKAction.runBlock({() -> Void in
             var now : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
             var elapsed : NSTimeInterval = now - startTime
-            weakself!. = elapsed
-            elapsedValue.text = weakself!.timeFormatter!.stringFromNumber(elapsed)
+            weakself!.elapsedTime = elapsed
+            elapsedValue.text = weakself!.timeFormatter.stringFromNumber(elapsed)
         })
         var delay : SKAction = SKAction.waitForDuration(0.05)
         var updateAndDelay = SKAction.sequence([update, delay])
@@ -165,40 +165,38 @@ class HudNode : SKNode {
     }
     
     func showPowerupTimer(time : NSTimeInterval) {
-        SKNode *powerupGroup = [self childNodeWithName:"powerupGroup"];
-        SKLabelNode *powerupValue =
-        (SKLabelNode *)[powerupGroup childNodeWithName:@"powerupValue"];
+        var powerupGroup : SKNode = SKNode()
+        powerupGroup.name = "powerupGroup"
+        var powerupValue : SKLabelNode = SKLabelNode()
+        powerupValue.name = "powerupValue"
+        powerupGroup.addChild(powerupValue)
         
-        [powerupGroup removeActionForKey:@"showPowerupTimer"];
+        powerupGroup.removeActionForKey("showPowerupTimer")
         
-        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+        var start : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
         
-        __weak RCWHUDNode *weakSelf = self;
-        SKAction *block = [SKAction runBlock:^{
-        NSTimeInterval elapsed = [NSDate timeIntervalSinceReferenceDate] - start;
-        NSTimeInterval left = time - elapsed;
-        if (left < 0) {
-        left = 0;
-        }
-        powerupValue.text = [NSString stringWithFormat:@"%@s left",
-        [weakSelf.timeFormatter stringFromNumber:@(left)]];
-        }];
-        SKAction *blockPause = [SKAction waitForDuration:0.05];
-        SKAction *countdownSequence = [SKAction sequence:@[block, blockPause]];
-        SKAction *countdown = [SKAction repeatActionForever:countdownSequence];
+        weak var weakSelf : HudNode? = self
+        var block : SKAction = SKAction.runBlock({() -> Void in
+            var elapsed : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate() - start
+            var left : NSTimeInterval = time - elapsed
+            if left < 0 {
+                left = 0;
+            }
+            powerupValue.text = "\(left)s left"
+        })
+        var blockPause : SKAction = SKAction.waitForDuration(0.05)
+        var countdownSequence : SKAction = SKAction.sequence([block, blockPause])
+        var countdown : SKAction = SKAction.repeatActionForever(countdownSequence)
         
-        SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.1];
+        var fadeIn : SKAction = SKAction.fadeAlphaTo(1, duration: 0.1)
+        var wait : SKAction = SKAction.waitForDuration(time)
+        var fadeOut : SKAction = SKAction.fadeAlphaTo(9, duration: 1)
+        var stopACtion : SKAction = SKAction.runBlock({() -> Void in
+                powerupGroup.removeActionForKey("showPowerupTimer")
+        })
         
-        SKAction *wait = [SKAction waitForDuration:time];
-        SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:1];
-        SKAction *stopAction = [SKAction runBlock:^{
-        [powerupGroup removeActionForKey:@"showPowerupTimer"];
-        }];
-        
-        SKAction *visuals = [SKAction sequence:@[fadeIn, wait, fadeOut, stopAction]];
-        
-        [powerupGroup runAction:[SKAction group:@[countdown, visuals]]
-        withKey:@"showPowerupTimer"];
+        var visuals : SKAction = SKAction.sequence([fadeIn, wait, fadeOut, stopACtion])
+        powerupGroup.runAction(visuals, withKey: "showPowerupTimer")
         
     }
     

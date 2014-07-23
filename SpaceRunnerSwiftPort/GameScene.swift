@@ -10,11 +10,15 @@ import SpriteKit
 
 class GameScene: SKScene {
     var shipTouch = UITouch()
+    var touchProcessed : Bool = true
     var lastUpdateTime = NSTimeInterval()
     var lastShotFired = NSTimeInterval()
     var shipFireRate : CGFloat = 0.5
     var easyMode : Bool = true
     var tapGesture : UITapGestureRecognizer = UITapGestureRecognizer()
+    var shootSound : SKAction = SKAction.playSoundFileNamed("shoot.m4a", waitForCompletion: false)
+    var shipExplodeSound : SKAction = SKAction.playSoundFileNamed("shipExplode.m4a", waitForCompletion: false)
+    var obstackleExplodeSound : SKAction = SKAction.playSoundFileNamed("obstacleExplode.m4a", waitForCompletion: false)
     
     func ca_nodeWithFile(named: NSString) -> SKEmitterNode {
         var baseName : NSString = named.stringByDeletingPathExtension
@@ -42,13 +46,25 @@ class GameScene: SKScene {
         var thurster : SKEmitterNode = ca_nodeWithFile("thrust")
         thurster.position = CGPointMake(0, -20)
         ship.addChild(thurster)
+        var hud : HudNode = HudNode()
+        hud.name = "hud"
+        hud.zPosition = 100
+        hud.position = CGPointMake(size.width/2, size.height/2)
         
+        self.addChild(hud)
+        hud.layoutForScene()
+        hud.startGame()
     }
     
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         if touches.count > 0 {
             self.shipTouch = touches.anyObject() as UITouch
+            self.touchProcessed = false
         }
+    }
+    
+    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!)  {
+        self.touchProcessed = true
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -58,8 +74,9 @@ class GameScene: SKScene {
         }
         var timeDelta = currentTime - self.lastUpdateTime
         
-        if self.shipTouch != nil {
-            if currentTime - self.lastShotFired > self.shipFireRate {
+        if self.touchProcessed == false {
+            var shotDiff : CGFloat = CGFloat(currentTime) - CGFloat(self.lastShotFired)
+            if shotDiff > self.shipFireRate {
                 if self.childNodeWithName("ship") {
                     self.shoot()
                     self.lastShotFired = currentTime
@@ -70,6 +87,7 @@ class GameScene: SKScene {
                 self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
                 //ship.position = self.shipTouch.locationInNode(self)
             }
+            //self.touchProcessed = true
         }
         var thingProb : UInt32
         if self.easyMode {
@@ -90,7 +108,7 @@ class GameScene: SKScene {
         var ship : SKNode = self.childNodeWithName("ship")
         var distanceLeft = sqrt(pow(ship.position.x - point.x, 2) + pow(ship.position.y - point.y, 2))
         if distanceLeft > 4 {
-            var distanceToTravel : CGFloat = byTimeDelta * shipSpeed
+            var distanceToTravel : CGFloat = CGFloat(byTimeDelta) * shipSpeed
             var angle : CGFloat = atan2(point.y - ship.position.y, point.x - ship.position.x)
             var yoffset : CGFloat = distanceToTravel * sin(angle)
             var xoffset : CGFloat = distanceToTravel * cos(angle)
@@ -127,9 +145,11 @@ class GameScene: SKScene {
     
     func dropPowerUp()
     {
-        var sideSize = 30.0
-        var startX = CGFloat(arc4random_uniform(UInt32(self.size.width) - 60)) + CGFloat(30.0)
-        var startY = self.size.height + sideSize
+        var sideSize : CGFloat = 30.0
+        var width : UInt = UInt(self.size.width)
+        var widthRandom : CGFloat =  CGFloat(UInt(arc4random_uniform(UInt32(width - 60))))
+        var startX : CGFloat = widthRandom + CGFloat(30.0)
+        var startY : CGFloat = self.size.height + sideSize
         var endY = 0 - sideSize
         var powerUp : SKSpriteNode = SKSpriteNode(imageNamed: "powerup")
         powerUp.size = CGSizeMake(sideSize, sideSize)
@@ -146,9 +166,9 @@ class GameScene: SKScene {
     }
     
     func dropEnemyShip() {
-        var sideSize = 30.0
-        var startX = CGFloat(arc4random_uniform(UInt32(self.size.width) - 60 ) ) + CGFloat(20.0)
-        var startY = self.size.height + sideSize
+        var sideSize : CGFloat = 30.0
+        var startX : CGFloat = CGFloat(UInt(arc4random_uniform(UInt32(UInt(self.size.width) - 60) ) )) + CGFloat(20.0)
+        var startY : CGFloat = self.size.height + sideSize
         var endY = 0 - sideSize
         var enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
         enemy.size = CGSizeMake(sideSize, sideSize)
@@ -199,22 +219,22 @@ class GameScene: SKScene {
     
     func dropAsteroid()
     {
-        var ran = arc4random_uniform(30)
+        var ran = UInt(arc4random_uniform(30))
         NSLog("ran: %d", ran)
-        var sideSize = 15.0 + CGFloat(ran)
+        var sideSize : CGFloat = 15.0 + CGFloat(ran)
         NSLog("sideSize: %d", sideSize)
-        var maxX = UInt32(self.size.width)
+        var maxX = UInt(self.size.width)
         NSLog("maxX: %d", maxX)
         var quarterX = maxX / 4
         NSLog("quarterX: %d", quarterX)
-        var maxPlusQuarterXSq = maxX + (quarterX * 2)
+        var maxPlusQuarterXSq = UInt32(maxX + (quarterX * 2))
         NSLog("maxPlus: %d", maxPlusQuarterXSq)
-        var rando = arc4random_uniform(maxPlusQuarterXSq)
+        var rando = UInt(arc4random_uniform(maxPlusQuarterXSq))
         NSLog("random: %d", rando)
         var startX =  ((rando > quarterX) ? (rando - quarterX) : 1)
         NSLog("startX: %d", startX)
         var startY = self.size.height + sideSize
-        var endX = arc4random_uniform(maxX)
+        var endX = UInt(arc4random_uniform(UInt32(maxX)))
         var endY = 0 - sideSize
         var asteroid : SKSpriteNode = SKSpriteNode(imageNamed:"asteroid")
         asteroid.size = CGSizeMake(sideSize, sideSize)
@@ -222,10 +242,11 @@ class GameScene: SKScene {
         asteroid.name = "obstackle"
         NSLog("asteriod.name: %s", asteroid.name)
         self.addChild(asteroid)
-        var move : SKAction = SKAction.moveTo(CGPointMake(CGFloat(endX), endY), duration: 3+CGFloat(arc4random_uniform(4)))
+        var movePoint : CGPoint = CGPointMake(CGFloat(endX), endY)
+        var move : SKAction = SKAction.moveTo(movePoint, duration: NSTimeInterval(3.0+CGFloat(UInt(arc4random_uniform(4)))))
         var remove : SKAction = SKAction.removeFromParent()
         var travelAndRemove : SKAction = SKAction.sequence([move, remove])
-        var spin : SKAction = SKAction.rotateByAngle(3.0, duration: CGFloat(arc4random_uniform(2)) + 1)
+        var spin : SKAction = SKAction.rotateByAngle(3.0, duration: NSTimeInterval(UInt(arc4random_uniform(2))) + 1)
         var spinForever : SKAction = SKAction.repeatActionForever(spin)
         var all : SKAction = SKAction.group([spinForever, travelAndRemove])
         asteroid.runAction(all)
@@ -233,7 +254,7 @@ class GameScene: SKScene {
     
     func checkCollisions() {
         var ship : SKNode = self.childNodeWithName("ship")
-        self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode!, stop : CMutablePointer<ObjCBool>) -> Void in
+        self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(powerup) {
                 powerup.removeFromParent()
                 self.shipFireRate = 0.1
@@ -246,16 +267,21 @@ class GameScene: SKScene {
                 ship.runAction(waitAndPowerdown, withKey: "waitAndPowerdown")
             }
             })
-        self.enumerateChildNodesWithName("obstackle", usingBlock: {(obstackle: SKNode!, stop : CMutablePointer<ObjCBool>) -> Void in
+        self.enumerateChildNodesWithName("obstackle", usingBlock: {(obstackle: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(obstackle) {
                 //self.shipTouch.delete(self)
-                ship.removeFromParent()
-                obstackle.removeFromParent()
+                ship.hidden = true
+                obstackle.hidden = true
+                self.endGame()
+                //ship.removeFromParent()
+                //obstackle.removeFromParent()
             }
-            self.enumerateChildNodesWithName("photon", usingBlock: {(photon: SKNode!, stop: CMutablePointer<ObjCBool>) -> Void in
+            self.enumerateChildNodesWithName("photon", usingBlock: {(photon: SKNode!, stop: UnsafePointer<ObjCBool>) -> Void in
                 if photon.intersectsNode(obstackle) {
-                    photon.removeFromParent()
-                    obstackle.removeFromParent()
+                    photon.hidden = true
+                    obstackle.hidden = true
+                    //photon.removeFromParent()
+                    //obstackle.removeFromParent()
                     //stop = true
                 }
                 })
@@ -279,8 +305,8 @@ class GameScene: SKScene {
         node.position = CGPointMake(self.size.width / 2, self.size.height / 2);
         self.addChild(node)
         
-        RCWHUDNode *hud = (RCWHUDNode *)[self childNodeWithName:@"hud"];
-        [hud endGame];
+        var hud : HudNode = self.childNodeWithName("hud") as HudNode
+        hud.endGame()
 
         
         if (score.integerValue < hud.score) {
