@@ -9,9 +9,8 @@
 import SpriteKit
 
 class GameOverNode : SKNode {
-    init() {
+    override init() {
         super.init()
-        if self != nil {
             var label : SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Heavy")
             label.fontSize = 32
             label.fontColor = SKColor.whiteColor()
@@ -42,7 +41,10 @@ class GameOverNode : SKNode {
             var pauseAndAppear : SKAction = SKAction.sequence([wait, appear, popUp, dropDown])
 
             instructions.runAction(pauseAndAppear)
-        }
+    }
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
     }
     
 }

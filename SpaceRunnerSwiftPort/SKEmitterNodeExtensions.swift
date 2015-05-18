@@ -15,8 +15,8 @@ extension SKEmitterNode {
         if pathExtension.length == 0 {
             pathExtension = "sks"
         }
-        var path : NSString = NSBundle.mainBundle().pathForResource(baseName, ofType: "sks")
-        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as SKEmitterNode
+        var path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
+        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
         return node
     }
     

@@ -21,9 +21,9 @@ class MenuController : UIViewController {
         scoreFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
         var defaults : NSUserDefaults = NSUserDefaults()
         defaults.registerDefaults(["highscore":0])
-        var score : NSNumber = defaults.valueForKey("highscore") as NSNumber
+        var score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
         var scoreString : NSString = "High Score: \(scoreFormatter.stringFromNumber(score))"
-        self.highScoreLabel!.text = scoreString
+        self.highScoreLabel!.text = scoreString as String
         
     }
     
@@ -46,9 +46,9 @@ class MenuController : UIViewController {
         self.demoView.removeFromSuperview()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
         if segue.identifier == "PlayGame" {
-            var gc : GameViewController = segue.destinationViewController as GameViewController
+            var gc : GameViewController = segue.destinationViewController as! GameViewController
             gc.easyMode = difficulty!.selected
         }
     }

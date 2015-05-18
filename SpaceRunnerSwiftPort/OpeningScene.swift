@@ -31,7 +31,7 @@ class OpeningScene : SKScene {
         transform.m34 = -1.0/500.0
         transform = CATransform3DRotate(transform, (45.0 * CGFloat(M_PI) / 180.0), 1.0, 0.0, 0.0)
         self.slantedView.layer.transform = transform
-        self.textView.frame = CGRectInset(self.view.bounds, 30.0, 0.0)
+        self.textView.frame = CGRectInset(self.view!.bounds, 30.0, 0.0)
         self.textView.opaque = false
         self.textView.backgroundColor = UIColor.clearColor()
         self.textView.textColor = UIColor.yellowColor()
@@ -48,9 +48,9 @@ class OpeningScene : SKScene {
         self.textView.center = CGPointMake(self.size.width/2 + 15.0, self.size.height + (self.size.height/2))
         self.slantedView.addSubview(self.textView)
         var gradient : CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.view.bounds
+        gradient.frame = self.view!.bounds
         let arrayColors : NSArray = [UIColor.clearColor().CGColor as AnyObject, UIColor.whiteColor().CGColor as AnyObject]
-        gradient.colors = arrayColors
+        gradient.colors = arrayColors as [AnyObject]
         gradient.startPoint = CGPointMake(0.5, 0.0)
         gradient.endPoint = CGPointMake(0.5, 0.20)
         self.slantedView.layer.mask = gradient
@@ -69,7 +69,7 @@ class OpeningScene : SKScene {
     }
     
     override func willMoveFromView(view: SKView!) {
-        self.view.removeGestureRecognizer(self.tapGesture)
+        self.view!.removeGestureRecognizer(self.tapGesture)
         self.slantedView.removeFromSuperview()
     }
     

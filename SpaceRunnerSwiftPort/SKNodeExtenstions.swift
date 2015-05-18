@@ -10,10 +10,10 @@ import SpriteKit
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         
-        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks")
         
-        var sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
-        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        var sceneData = NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe, error: nil)
+        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData!)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
         if let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as? SKScene

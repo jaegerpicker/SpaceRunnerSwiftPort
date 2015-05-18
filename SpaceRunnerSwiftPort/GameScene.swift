@@ -26,8 +26,8 @@ class GameScene: SKScene {
         if pathExtension.length == 0 {
             pathExtension = "sks"
         }
-        var path : NSString = NSBundle.mainBundle().pathForResource(baseName, ofType: "sks")
-        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as SKEmitterNode
+        var path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
+        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
         return node
     }
     
@@ -38,7 +38,7 @@ class GameScene: SKScene {
         var starField : StarField = StarField()
         self.addChild(StarField() as SKNode)
         var name : NSString = "Spaceship.png"
-        var ship : SKSpriteNode = SKSpriteNode(imageNamed: name)
+        var ship : SKSpriteNode = SKSpriteNode(imageNamed: name as String)
         ship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         ship.size = CGSizeMake(40, 40)
         ship.name = "ship"
@@ -56,16 +56,17 @@ class GameScene: SKScene {
         hud.startGame()
     }
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if touches.count > 0 {
-            self.shipTouch = touches.anyObject() as UITouch
+            self.shipTouch = touches[touches.endIndex] as! UITouch
             self.touchProcessed = false
         }
     }
     
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!)  {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.touchProcessed = true
     }
+
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -77,13 +78,13 @@ class GameScene: SKScene {
         if self.touchProcessed == false {
             var shotDiff : CGFloat = CGFloat(currentTime) - CGFloat(self.lastShotFired)
             if shotDiff > self.shipFireRate {
-                if self.childNodeWithName("ship") {
+                if (self.childNodeWithName("ship") != nil) {
                     self.shoot()
                     self.lastShotFired = currentTime
                 }
             }
-            if self.childNodeWithName("ship") {
-                var ship : SKNode = self.childNodeWithName("ship")
+            if (self.childNodeWithName("ship") != nil) {
+                var ship : SKNode = self.childNodeWithName("ship")!
                 self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
                 //ship.position = self.shipTouch.locationInNode(self)
             }
@@ -105,7 +106,7 @@ class GameScene: SKScene {
     
     func moveShipTowardPoint(point: CGPoint, byTimeDelta: NSTimeInterval) {
         var shipSpeed:CGFloat = 130.0
-        var ship : SKNode = self.childNodeWithName("ship")
+        var ship : SKNode = self.childNodeWithName("ship")!
         var distanceLeft = sqrt(pow(ship.position.x - point.x, 2) + pow(ship.position.y - point.y, 2))
         if distanceLeft > 4 {
             var distanceToTravel : CGFloat = CGFloat(byTimeDelta) * shipSpeed
@@ -118,7 +119,7 @@ class GameScene: SKScene {
     }
     
     func shoot() {
-        var ship : SKNode = self.childNodeWithName("ship")
+        var ship : SKNode = self.childNodeWithName("ship")!
         var photon : SKSpriteNode = SKSpriteNode(imageNamed: "photon")
         photon.name = "photon"
         photon.position = ship.position
@@ -240,7 +241,7 @@ class GameScene: SKScene {
         asteroid.size = CGSizeMake(sideSize, sideSize)
         asteroid.position = CGPointMake(CGFloat(startX), startY)
         asteroid.name = "obstackle"
-        NSLog("asteriod.name: %s", asteroid.name)
+        NSLog("asteriod.name: %s", asteroid.name!)
         self.addChild(asteroid)
         var movePoint : CGPoint = CGPointMake(CGFloat(endX), endY)
         var move : SKAction = SKAction.moveTo(movePoint, duration: NSTimeInterval(3.0+CGFloat(UInt(arc4random_uniform(4)))))
@@ -253,7 +254,20 @@ class GameScene: SKScene {
     }
     
     func checkCollisions() {
-        var ship : SKNode = self.childNodeWithName("ship")
+        var ship : SKNode = self.childNodeWithName("ship")!
+        /*self.enumerateChildNodesWithName(name: "powerup", usingBlock: {(powerup: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
+            if ship.intersectsNode(powerup) {
+                powerup.removeFromParent()
+                self.shipFireRate = 0.1
+                var powerdown : SKAction = SKAction.runBlock({() -> Void in
+                    self.shipFireRate = 0.5
+                })
+                var wait : SKAction = SKAction.waitForDuration(5.0)
+                var waitAndPowerdown : SKAction = SKAction.sequence([wait, powerdown])
+                ship.removeActionForKey("waitAndPowerdown")
+                ship.runAction(waitAndPowerdown, withKey: "waitAndPowerdown")
+            }
+        })
         self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(powerup) {
                 powerup.removeFromParent()
@@ -285,7 +299,7 @@ class GameScene: SKScene {
                     //stop = true
                 }
                 })
-            })
+            })*/
         
     }
     
@@ -295,17 +309,17 @@ class GameScene: SKScene {
     
     func endGame() {
         self.tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
-        self.view.addGestureRecognizer(self.tapGesture)
+        self.view!.addGestureRecognizer(self.tapGesture)
         
         
         var defaults : NSUserDefaults = NSUserDefaults()
         defaults.registerDefaults(["highscore":0])
-        var score : NSNumber = defaults.valueForKey("highscore") as NSNumber
+        var score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
         var node : GameOverNode = GameOverNode()
         node.position = CGPointMake(self.size.width / 2, self.size.height / 2);
         self.addChild(node)
         
-        var hud : HudNode = self.childNodeWithName("hud") as HudNode
+        var hud : HudNode = self.childNodeWithName("hud") as! HudNode
         hud.endGame()
 
         

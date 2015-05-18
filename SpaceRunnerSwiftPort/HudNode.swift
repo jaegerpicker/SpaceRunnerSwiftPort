@@ -14,9 +14,9 @@ class HudNode : SKNode {
     var scoreFormatter : NSNumberFormatter = NSNumberFormatter()
     var timeFormatter : NSNumberFormatter = NSNumberFormatter()
     
-    init() {
+    override init() {
         super.init()
-        if self != nil {
+
             var scoreGroup : SKNode = SKNode()
             scoreGroup.name = "scoreGroup"
             
@@ -101,25 +101,29 @@ class HudNode : SKNode {
             var pulse : SKAction = SKAction.sequence([scaleUp, scaleDown])
             var pulseForever : SKAction = SKAction.repeatActionForever(pulse)
             powerupTitle.runAction(pulseForever)
-        }
+        
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func layoutForScene() {
-        assert(self.scene, "Cannot be called unless added to the scene")
-        var sceneSize : CGSize = self.scene.size
+        //assert(self.scene, "Cannot be called unless added to the scene")
+        var sceneSize : CGSize = self.scene!.size
         var groupSize : CGSize = CGSizeZero
         
-        var scoreGroup : SKNode = self.childNodeWithName("scoreGroup")
+        var scoreGroup : SKNode = self.childNodeWithName("scoreGroup")!
         groupSize = scoreGroup.calculateAccumulatedFrame().size
         
         scoreGroup.position = CGPointMake(0 - sceneSize.width/2 + 20, sceneSize.height/2 - groupSize.height)
         
-        var powerupGroup : SKNode = self.childNodeWithName("powerupGroup")
+        var powerupGroup : SKNode = self.childNodeWithName("powerupGroup")!
         
         groupSize = powerupGroup.calculateAccumulatedFrame().size
         powerupGroup.position = CGPointMake(0,sceneSize.height/2 - groupSize.height)
         
-        var elapsedGroup : SKNode = self.childNodeWithName("elapsedGroup")
+        var elapsedGroup : SKNode = self.childNodeWithName("elapsedGroup")!
         groupSize = elapsedGroup.calculateAccumulatedFrame().size
         elapsedGroup.position = CGPointMake(sceneSize.width/2 - 20, sceneSize.height/2 - groupSize.height)
     }
@@ -127,9 +131,9 @@ class HudNode : SKNode {
     func addPoints(points : NSInteger) {
         self.score += points
         
-        var scoreValue : SKLabelNode = self.childNodeWithName("scoreGroup/scoreValue") as SKLabelNode
+        var scoreValue : SKLabelNode = self.childNodeWithName("scoreGroup/scoreValue") as! SKLabelNode
 
-        scoreValue.text = self.scoreFormatter.stringFromNumber(self.score)
+        scoreValue.text = self.scoreFormatter.stringFromNumber(self.score)!
         
         var scale : SKAction = SKAction.scaleTo(1.1, duration: 0.02)
         var shrink : SKAction = SKAction.scaleTo(1, duration: 0.07)
@@ -139,13 +143,13 @@ class HudNode : SKNode {
     
     func startGame() {
         var startTime : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var elapsedValue : SKLabelNode = self.childNodeWithName("elapsedGroup/elapsedValue") as SKLabelNode
+        var elapsedValue : SKLabelNode = self.childNodeWithName("elapsedGroup/elapsedValue") as! SKLabelNode
         weak var weakself : HudNode? = self
         var update : SKAction = SKAction.runBlock({() -> Void in
             var now : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
             var elapsed : NSTimeInterval = now - startTime
             weakself!.elapsedTime = elapsed
-            elapsedValue.text = weakself!.timeFormatter.stringFromNumber(elapsed)
+            elapsedValue.text = weakself!.timeFormatter.stringFromNumber(elapsed)!
         })
         var delay : SKAction = SKAction.waitForDuration(0.05)
         var updateAndDelay = SKAction.sequence([update, delay])
@@ -157,7 +161,7 @@ class HudNode : SKNode {
     func endGame() {
         self.removeActionForKey("elapsedGameTimer")
         
-        var powerupGroup : SKNode = self.childNodeWithName("powerupGroup")
+        var powerupGroup : SKNode = self.childNodeWithName("powerupGroup")!
         powerupGroup.removeActionForKey("showPowerupTimer")
         
         var fadeOut : SKAction = SKAction.fadeAlphaTo(0, duration: 0.3)

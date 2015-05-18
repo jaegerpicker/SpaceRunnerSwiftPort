@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
         if let openingScene : OpeningScene = OpeningScene.unarchiveFromFile("OpeningScene") as? OpeningScene {
             openingScene.scaleMode = .AspectFill
             var transition : SKTransition = SKTransition.fadeWithDuration(1)
-            let skView : SKView = self.view as SKView
+            let skView : SKView = self.view as! SKView
             skView.presentScene(openingScene, transition: transition)
         
             openingScene.callback = {
@@ -47,9 +47,9 @@ class GameViewController: UIViewController {
 
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.toRaw())
+            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
         } else {
-            return Int(UIInterfaceOrientationMask.All.toRaw())
+            return Int(UIInterfaceOrientationMask.All.rawValue)
         }
     }
 
