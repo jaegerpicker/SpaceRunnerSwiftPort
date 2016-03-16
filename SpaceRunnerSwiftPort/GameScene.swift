@@ -57,9 +57,11 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if touches.count > 0 {
-            self.shipTouch = touches[touches.endIndex] as! UITouch
-            self.touchProcessed = false
+        if let touch = touches[touches.endIndex] as? UITouch {
+            if touches.count > 0 {
+                self.shipTouch = touches[touches.endIndex] as! UITouch
+                self.touchProcessed = false
+            }
         }
     }
     
