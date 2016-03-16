@@ -17,7 +17,7 @@ class OpeningScene : SKScene {
     var textView : UITextView = UITextView()
     var tapGesture : UITapGestureRecognizer = UITapGestureRecognizer()
     
-    override func didMoveToView(view: SKView!) {
+    override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.blackColor()
         let sf : StarField = StarField()
         self.addChild(sf as SKNode)
@@ -63,12 +63,12 @@ class OpeningScene : SKScene {
                     self.endScene()
                 }
             })
-        var endSceneSelector : Selector = "endScene:"
+        //var endSceneSelector : Selector = "endScene:"
         self.tapGesture = UITapGestureRecognizer(target: self, action: "endScene")
         view.addGestureRecognizer(self.tapGesture)
     }
     
-    override func willMoveFromView(view: SKView!) {
+    override func willMoveFromView(view: SKView) {
         self.view!.removeGestureRecognizer(self.tapGesture)
         self.slantedView.removeFromSuperview()
     }

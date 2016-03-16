@@ -35,7 +35,7 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundColor = UIColor.blackColor()
-        var starField : StarField = StarField()
+        //var starField : StarField = StarField()
         self.addChild(StarField() as SKNode)
         let name : NSString = "Spaceship.png"
         let ship : SKSpriteNode = SKSpriteNode(imageNamed: name as String)
@@ -57,11 +57,9 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches[touches.endIndex] as? UITouch {
-            if touches.count > 0 {
-                self.shipTouch = touches[touches.endIndex] 
-                self.touchProcessed = false
-            }
+        if let touch = touches.first {
+			self.shipTouch = touch
+			self.touchProcessed = false
         }
     }
     
@@ -86,7 +84,7 @@ class GameScene: SKScene {
                 }
             }
             if (self.childNodeWithName("ship") != nil) {
-                var ship : SKNode = self.childNodeWithName("ship")!
+                //var ship : SKNode = self.childNodeWithName("ship")!
                 self.moveShipTowardPoint(self.shipTouch.locationInNode(self), byTimeDelta: timeDelta)
                 //ship.position = self.shipTouch.locationInNode(self)
             }
@@ -172,13 +170,13 @@ class GameScene: SKScene {
         let sideSize : CGFloat = 30.0
         let startX : CGFloat = CGFloat(UInt(arc4random_uniform(UInt32((UInt(self.size.width)) - UInt(60)) ) )) + CGFloat(20.0)
         let startY : CGFloat = self.size.height + sideSize
-        let endY = 0 - sideSize
+        //let endY = 0 - sideSize
         let enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
         enemy.size = CGSizeMake(sideSize, sideSize)
         enemy.position = CGPointMake(startX, startY)
         enemy.name = "enemy"
         self.addChild(enemy)
-        let move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
+        //let move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
         let shipPath : CGPathRef = self.buildEnemyShipMovementPath()
         let followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
         let remove :SKAction = SKAction.removeFromParent()
@@ -256,34 +254,34 @@ class GameScene: SKScene {
     }
     
     func checkCollisions() {
-        var ship : SKNode = self.childNodeWithName("ship")!
-        /*self.enumerateChildNodesWithName(name: "powerup", usingBlock: {(powerup: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
+        let ship : SKNode = self.childNodeWithName("ship")!
+        self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(powerup) {
                 powerup.removeFromParent()
                 self.shipFireRate = 0.1
-                var powerdown : SKAction = SKAction.runBlock({() -> Void in
+                let powerdown : SKAction = SKAction.runBlock({() -> Void in
                     self.shipFireRate = 0.5
                 })
-                var wait : SKAction = SKAction.waitForDuration(5.0)
-                var waitAndPowerdown : SKAction = SKAction.sequence([wait, powerdown])
+                let wait : SKAction = SKAction.waitForDuration(5.0)
+                let waitAndPowerdown : SKAction = SKAction.sequence([wait, powerdown])
                 ship.removeActionForKey("waitAndPowerdown")
                 ship.runAction(waitAndPowerdown, withKey: "waitAndPowerdown")
             }
         })
-        self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
+        self.enumerateChildNodesWithName("powerup", usingBlock: {(powerup: SKNode!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(powerup) {
                 powerup.removeFromParent()
                 self.shipFireRate = 0.1
-                var powerdown : SKAction = SKAction.runBlock({() -> Void in
+                let powerdown : SKAction = SKAction.runBlock({() -> Void in
                         self.shipFireRate = 0.5
                     })
-                var wait : SKAction = SKAction.waitForDuration(5.0)
-                var waitAndPowerdown : SKAction = SKAction.sequence([wait, powerdown])
+                let wait : SKAction = SKAction.waitForDuration(5.0)
+                let waitAndPowerdown : SKAction = SKAction.sequence([wait, powerdown])
                 ship.removeActionForKey("waitAndPowerdown")
                 ship.runAction(waitAndPowerdown, withKey: "waitAndPowerdown")
             }
             })
-        self.enumerateChildNodesWithName("obstackle", usingBlock: {(obstackle: SKNode!, stop : UnsafePointer<ObjCBool>) -> Void in
+        self.enumerateChildNodesWithName("obstackle", usingBlock: {(obstackle: SKNode!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
             if ship.intersectsNode(obstackle) {
                 //self.shipTouch.delete(self)
                 ship.hidden = true
@@ -292,7 +290,7 @@ class GameScene: SKScene {
                 //ship.removeFromParent()
                 //obstackle.removeFromParent()
             }
-            self.enumerateChildNodesWithName("photon", usingBlock: {(photon: SKNode!, stop: UnsafePointer<ObjCBool>) -> Void in
+            self.enumerateChildNodesWithName("photon", usingBlock: {(photon: SKNode, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
                 if photon.intersectsNode(obstackle) {
                     photon.hidden = true
                     obstackle.hidden = true
@@ -301,7 +299,7 @@ class GameScene: SKScene {
                     //stop = true
                 }
                 })
-            })*/
+            })
         
     }
     

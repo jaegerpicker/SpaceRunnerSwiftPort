@@ -48,7 +48,7 @@ class MenuController : UIViewController {
     
     override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
         if segue.identifier == "PlayGame" {
-            var gc : GameViewController = segue.destinationViewController as! GameViewController
+            let gc : GameViewController = segue.destinationViewController as! GameViewController
             gc.easyMode = difficulty!.selected
         }
     }

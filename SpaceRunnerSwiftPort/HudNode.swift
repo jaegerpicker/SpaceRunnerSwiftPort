@@ -179,7 +179,7 @@ class HudNode : SKNode {
         
         let start : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
         
-        weak var weakSelf : HudNode? = self
+        //weak var weakSelf : HudNode? = self
         let block : SKAction = SKAction.runBlock({() -> Void in
             let elapsed : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate() - start
             var left : NSTimeInterval = time - elapsed
@@ -190,7 +190,7 @@ class HudNode : SKNode {
         })
         let blockPause : SKAction = SKAction.waitForDuration(0.05)
         let countdownSequence : SKAction = SKAction.sequence([block, blockPause])
-        var countdown : SKAction = SKAction.repeatActionForever(countdownSequence)
+        let countdown : SKAction = SKAction.repeatActionForever(countdownSequence)
         
         let fadeIn : SKAction = SKAction.fadeAlphaTo(1, duration: 0.1)
         let wait : SKAction = SKAction.waitForDuration(time)

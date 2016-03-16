@@ -9,7 +9,7 @@ import SpriteKit
 
 class MenuScene : SKScene {
     
-    override func didMoveToView(view: SKView!) {
+    override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.blackColor()
         let sf : StarField = StarField()
         self.addChild(sf as SKNode)
