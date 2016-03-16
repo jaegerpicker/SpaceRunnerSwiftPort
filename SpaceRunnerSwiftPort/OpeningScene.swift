@@ -19,9 +19,9 @@ class OpeningScene : SKScene {
     
     override func didMoveToView(view: SKView!) {
         self.backgroundColor = UIColor.blackColor()
-        var sf : StarField = StarField()
+        let sf : StarField = StarField()
         self.addChild(sf as SKNode)
-        var ship : SKSpriteNode = SKSpriteNode(imageNamed: "spaceship")
+        let ship : SKSpriteNode = SKSpriteNode(imageNamed: "spaceship")
         self.addChild(ship)
         view.ignoresSiblingOrder = true
         self.slantedView.opaque = false
@@ -47,7 +47,7 @@ class OpeningScene : SKScene {
         self.textView.userInteractionEnabled = false
         self.textView.center = CGPointMake(self.size.width/2 + 15.0, self.size.height + (self.size.height/2))
         self.slantedView.addSubview(self.textView)
-        var gradient : CAGradientLayer = CAGradientLayer()
+        let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = self.view!.bounds
         let arrayColors : NSArray = [UIColor.clearColor().CGColor as AnyObject, UIColor.whiteColor().CGColor as AnyObject]
         gradient.colors = arrayColors as [AnyObject]

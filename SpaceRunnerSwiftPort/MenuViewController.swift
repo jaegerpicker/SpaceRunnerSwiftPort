@@ -17,12 +17,12 @@ class MenuController : UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var scoreFormatter : NSNumberFormatter = NSNumberFormatter()
+        let scoreFormatter : NSNumberFormatter = NSNumberFormatter()
         scoreFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        var defaults : NSUserDefaults = NSUserDefaults()
+        let defaults : NSUserDefaults = NSUserDefaults()
         defaults.registerDefaults(["highscore":0])
-        var score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
-        var scoreString : NSString = "High Score: \(scoreFormatter.stringFromNumber(score))"
+        let score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
+        let scoreString : NSString = "High Score: \(scoreFormatter.stringFromNumber(score))"
         self.highScoreLabel!.text = scoreString as String
         
     }
@@ -33,7 +33,7 @@ class MenuController : UIViewController {
         if let scene : MenuScene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
             scene.backgroundColor = UIColor.blackColor()
             scene.scaleMode = SKSceneScaleMode.AspectFill
-            var starField : StarField = StarField()
+            let starField : StarField = StarField()
             scene.addChild(starField as SKNode)
             self.demoView.ignoresSiblingOrder = true
             self.demoView.presentScene(scene)

@@ -21,13 +21,13 @@ class GameScene: SKScene {
     var obstackleExplodeSound : SKAction = SKAction.playSoundFileNamed("obstacleExplode.m4a", waitForCompletion: false)
     
     func ca_nodeWithFile(named: NSString) -> SKEmitterNode {
-        var baseName : NSString = named.stringByDeletingPathExtension
+        let baseName : NSString = named.stringByDeletingPathExtension
         var pathExtension : NSString = named.pathExtension
         if pathExtension.length == 0 {
             pathExtension = "sks"
         }
-        var path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
-        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
+        let path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
+        let node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
         return node
     }
     
@@ -37,16 +37,16 @@ class GameScene: SKScene {
         backgroundColor = UIColor.blackColor()
         var starField : StarField = StarField()
         self.addChild(StarField() as SKNode)
-        var name : NSString = "Spaceship.png"
-        var ship : SKSpriteNode = SKSpriteNode(imageNamed: name as String)
+        let name : NSString = "Spaceship.png"
+        let ship : SKSpriteNode = SKSpriteNode(imageNamed: name as String)
         ship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         ship.size = CGSizeMake(40, 40)
         ship.name = "ship"
         self.addChild(ship)
-        var thurster : SKEmitterNode = ca_nodeWithFile("thrust")
+        let thurster : SKEmitterNode = ca_nodeWithFile("thrust")
         thurster.position = CGPointMake(0, -20)
         ship.addChild(thurster)
-        var hud : HudNode = HudNode()
+        let hud : HudNode = HudNode()
         hud.name = "hud"
         hud.zPosition = 100
         hud.position = CGPointMake(size.width/2, size.height/2)
@@ -56,16 +56,16 @@ class GameScene: SKScene {
         hud.startGame()
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches[touches.endIndex] as? UITouch {
             if touches.count > 0 {
-                self.shipTouch = touches[touches.endIndex] as! UITouch
+                self.shipTouch = touches[touches.endIndex] 
                 self.touchProcessed = false
             }
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.touchProcessed = true
     }
 
@@ -75,10 +75,10 @@ class GameScene: SKScene {
         if self.lastUpdateTime == 0 {
             self.lastUpdateTime = currentTime
         }
-        var timeDelta = currentTime - self.lastUpdateTime
+        let timeDelta = currentTime - self.lastUpdateTime
         
         if self.touchProcessed == false {
-            var shotDiff : CGFloat = CGFloat(currentTime) - CGFloat(self.lastShotFired)
+            let shotDiff : CGFloat = CGFloat(currentTime) - CGFloat(self.lastShotFired)
             if shotDiff > self.shipFireRate {
                 if (self.childNodeWithName("ship") != nil) {
                     self.shoot()
@@ -107,33 +107,33 @@ class GameScene: SKScene {
     }
     
     func moveShipTowardPoint(point: CGPoint, byTimeDelta: NSTimeInterval) {
-        var shipSpeed:CGFloat = 130.0
-        var ship : SKNode = self.childNodeWithName("ship")!
-        var distanceLeft = sqrt(pow(ship.position.x - point.x, 2) + pow(ship.position.y - point.y, 2))
+        let shipSpeed:CGFloat = 130.0
+        let ship : SKNode = self.childNodeWithName("ship")!
+        let distanceLeft = sqrt(pow(ship.position.x - point.x, 2) + pow(ship.position.y - point.y, 2))
         if distanceLeft > 4 {
-            var distanceToTravel : CGFloat = CGFloat(byTimeDelta) * shipSpeed
-            var angle : CGFloat = atan2(point.y - ship.position.y, point.x - ship.position.x)
-            var yoffset : CGFloat = distanceToTravel * sin(angle)
-            var xoffset : CGFloat = distanceToTravel * cos(angle)
+            let distanceToTravel : CGFloat = CGFloat(byTimeDelta) * shipSpeed
+            let angle : CGFloat = atan2(point.y - ship.position.y, point.x - ship.position.x)
+            let yoffset : CGFloat = distanceToTravel * sin(angle)
+            let xoffset : CGFloat = distanceToTravel * cos(angle)
             ship.position = CGPointMake(ship.position.x + xoffset, ship.position.y + yoffset)
         }
         
     }
     
     func shoot() {
-        var ship : SKNode = self.childNodeWithName("ship")!
-        var photon : SKSpriteNode = SKSpriteNode(imageNamed: "photon")
+        let ship : SKNode = self.childNodeWithName("ship")!
+        let photon : SKSpriteNode = SKSpriteNode(imageNamed: "photon")
         photon.name = "photon"
         photon.position = ship.position
         self.addChild(photon)
-        var fly : SKAction = SKAction.moveByX(0, y: self.size.height, duration: 0.5)
-        var remove : SKAction = SKAction.removeFromParent()
-        var fireAndRemove : SKAction = SKAction.sequence([fly, remove])
+        let fly : SKAction = SKAction.moveByX(0, y: self.size.height, duration: 0.5)
+        let remove : SKAction = SKAction.removeFromParent()
+        let fireAndRemove : SKAction = SKAction.sequence([fly, remove])
         photon.runAction(fireAndRemove)
     }
     
     func dropthing() {
-        var dice : UInt32 = arc4random_uniform(100)
+        let dice : UInt32 = arc4random_uniform(100)
         if dice < 5 {
             //self.dropPowerUp()
             dropPowerUp()
@@ -148,46 +148,46 @@ class GameScene: SKScene {
     
     func dropPowerUp()
     {
-        var sideSize : CGFloat = 30.0
-        var width : UInt = UInt(self.size.width)
-        var widthRandom : CGFloat =  CGFloat(UInt(arc4random_uniform(UInt32(width - 60))))
-        var startX : CGFloat = widthRandom + CGFloat(30.0)
-        var startY : CGFloat = self.size.height + sideSize
-        var endY = 0 - sideSize
-        var powerUp : SKSpriteNode = SKSpriteNode(imageNamed: "powerup")
+        let sideSize : CGFloat = 30.0
+        let width : UInt = UInt(self.size.width)
+        let widthRandom : CGFloat =  CGFloat(UInt(arc4random_uniform(UInt32(width - 60))))
+        let startX : CGFloat = widthRandom + CGFloat(30.0)
+        let startY : CGFloat = self.size.height + sideSize
+        let endY = 0 - sideSize
+        let powerUp : SKSpriteNode = SKSpriteNode(imageNamed: "powerup")
         powerUp.size = CGSizeMake(sideSize, sideSize)
         powerUp.position = CGPointMake(startX, startY)
         powerUp.name = "powerup"
         self.addChild(powerUp)
-        var move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
-        var spin : SKAction = SKAction.rotateByAngle(-1, duration: 1)
-        var remove : SKAction = SKAction.removeFromParent()
-        var spinForever : SKAction = SKAction.repeatActionForever(spin)
-        var travelAndRemove : SKAction = SKAction.sequence([move, remove])
-        var all : SKAction = SKAction.group([spinForever, travelAndRemove])
+        let move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
+        let spin : SKAction = SKAction.rotateByAngle(-1, duration: 1)
+        let remove : SKAction = SKAction.removeFromParent()
+        let spinForever : SKAction = SKAction.repeatActionForever(spin)
+        let travelAndRemove : SKAction = SKAction.sequence([move, remove])
+        let all : SKAction = SKAction.group([spinForever, travelAndRemove])
         powerUp.runAction(all)
     }
     
     func dropEnemyShip() {
-        var sideSize : CGFloat = 30.0
-        var startX : CGFloat = CGFloat(UInt(arc4random_uniform(UInt32(UInt(self.size.width) - 60) ) )) + CGFloat(20.0)
-        var startY : CGFloat = self.size.height + sideSize
-        var endY = 0 - sideSize
-        var enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
+        let sideSize : CGFloat = 30.0
+        let startX : CGFloat = CGFloat(UInt(arc4random_uniform(UInt32((UInt(self.size.width)) - UInt(60)) ) )) + CGFloat(20.0)
+        let startY : CGFloat = self.size.height + sideSize
+        let endY = 0 - sideSize
+        let enemy : SKSpriteNode = SKSpriteNode(imageNamed:"enemy")
         enemy.size = CGSizeMake(sideSize, sideSize)
         enemy.position = CGPointMake(startX, startY)
         enemy.name = "enemy"
         self.addChild(enemy)
-        var move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
-        var shipPath : CGPathRef = self.buildEnemyShipMovementPath()
-        var followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
-        var remove :SKAction = SKAction.removeFromParent()
-        var all : SKAction = SKAction.sequence([followPath, remove])
+        let move : SKAction = SKAction.moveTo(CGPointMake(startX, endY), duration: 6)
+        let shipPath : CGPathRef = self.buildEnemyShipMovementPath()
+        let followPath : SKAction = SKAction.followPath(shipPath, asOffset: true, orientToPath: true, duration: 7.0)
+        let remove :SKAction = SKAction.removeFromParent()
+        let all : SKAction = SKAction.sequence([followPath, remove])
         enemy.runAction(all)
     }
     
     func buildEnemyShipMovementPath() -> CGPathRef {
-        var bezierPath : UIBezierPath = UIBezierPath()
+        let bezierPath : UIBezierPath = UIBezierPath()
         bezierPath.moveToPoint(CGPointMake(0.5, -0.5))
         bezierPath.addCurveToPoint(CGPointMake(-2.5, -59.5),
             controlPoint1: CGPointMake(0.5, -0.5),
@@ -222,36 +222,36 @@ class GameScene: SKScene {
     
     func dropAsteroid()
     {
-        var ran = UInt(arc4random_uniform(30))
+        let ran = UInt(arc4random_uniform(30))
         NSLog("ran: %d", ran)
-        var sideSize : CGFloat = 15.0 + CGFloat(ran)
+        let sideSize : CGFloat = 15.0 + CGFloat(ran)
         NSLog("sideSize: %d", sideSize)
-        var maxX = UInt(self.size.width)
+        let maxX = UInt(self.size.width)
         NSLog("maxX: %d", maxX)
-        var quarterX = maxX / 4
+        let quarterX = maxX / 4
         NSLog("quarterX: %d", quarterX)
-        var maxPlusQuarterXSq = UInt32(maxX + (quarterX * 2))
+        let maxPlusQuarterXSq = UInt32(maxX + (quarterX * 2))
         NSLog("maxPlus: %d", maxPlusQuarterXSq)
-        var rando = UInt(arc4random_uniform(maxPlusQuarterXSq))
+        let rando = UInt(arc4random_uniform(maxPlusQuarterXSq))
         NSLog("random: %d", rando)
-        var startX =  ((rando > quarterX) ? (rando - quarterX) : 1)
+        let startX =  ((rando > quarterX) ? (rando - quarterX) : 1)
         NSLog("startX: %d", startX)
-        var startY = self.size.height + sideSize
-        var endX = UInt(arc4random_uniform(UInt32(maxX)))
-        var endY = 0 - sideSize
-        var asteroid : SKSpriteNode = SKSpriteNode(imageNamed:"asteroid")
+        let startY = self.size.height + sideSize
+        let endX = UInt(arc4random_uniform(UInt32(maxX)))
+        let endY = 0 - sideSize
+        let asteroid : SKSpriteNode = SKSpriteNode(imageNamed:"asteroid")
         asteroid.size = CGSizeMake(sideSize, sideSize)
         asteroid.position = CGPointMake(CGFloat(startX), startY)
         asteroid.name = "obstackle"
         NSLog("asteriod.name: %s", asteroid.name!)
         self.addChild(asteroid)
-        var movePoint : CGPoint = CGPointMake(CGFloat(endX), endY)
-        var move : SKAction = SKAction.moveTo(movePoint, duration: NSTimeInterval(3.0+CGFloat(UInt(arc4random_uniform(4)))))
-        var remove : SKAction = SKAction.removeFromParent()
-        var travelAndRemove : SKAction = SKAction.sequence([move, remove])
-        var spin : SKAction = SKAction.rotateByAngle(3.0, duration: NSTimeInterval(UInt(arc4random_uniform(2))) + 1)
-        var spinForever : SKAction = SKAction.repeatActionForever(spin)
-        var all : SKAction = SKAction.group([spinForever, travelAndRemove])
+        let movePoint : CGPoint = CGPointMake(CGFloat(endX), endY)
+        let move : SKAction = SKAction.moveTo(movePoint, duration: NSTimeInterval(3.0+CGFloat(UInt(arc4random_uniform(4)))))
+        let remove : SKAction = SKAction.removeFromParent()
+        let travelAndRemove : SKAction = SKAction.sequence([move, remove])
+        let spin : SKAction = SKAction.rotateByAngle(3.0, duration: NSTimeInterval(UInt(arc4random_uniform(2))) + 1)
+        let spinForever : SKAction = SKAction.repeatActionForever(spin)
+        let all : SKAction = SKAction.group([spinForever, travelAndRemove])
         asteroid.runAction(all)
     }
     
@@ -314,14 +314,14 @@ class GameScene: SKScene {
         self.view!.addGestureRecognizer(self.tapGesture)
         
         
-        var defaults : NSUserDefaults = NSUserDefaults()
+        let defaults : NSUserDefaults = NSUserDefaults()
         defaults.registerDefaults(["highscore":0])
-        var score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
-        var node : GameOverNode = GameOverNode()
+        let score : NSNumber = defaults.valueForKey("highscore") as! NSNumber
+        let node : GameOverNode = GameOverNode()
         node.position = CGPointMake(self.size.width / 2, self.size.height / 2);
         self.addChild(node)
         
-        var hud : HudNode = self.childNodeWithName("hud") as! HudNode
+        let hud : HudNode = self.childNodeWithName("hud") as! HudNode
         hud.endGame()
 
         

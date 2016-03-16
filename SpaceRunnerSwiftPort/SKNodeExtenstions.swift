@@ -12,8 +12,8 @@ extension SKNode {
         
         let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks")
         
-        var sceneData = NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe, error: nil)
-        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData!)
+        let sceneData = try? NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe)
+        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData!)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
         if let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as? SKScene

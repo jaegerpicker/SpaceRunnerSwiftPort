@@ -10,25 +10,25 @@ import SpriteKit
 
 extension SKEmitterNode {
     func ca_nodeWithFile(named: NSString) -> SKEmitterNode {
-        var baseName : NSString = named.stringByDeletingPathExtension
+        let baseName : NSString = named.stringByDeletingPathExtension
         var pathExtension : NSString = named.pathExtension
         if pathExtension.length == 0 {
             pathExtension = "sks"
         }
-        var path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
-        var node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
+        let path : NSString = NSBundle.mainBundle().pathForResource(baseName as String, ofType: "sks")!
+        let node : SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(path as String) as! SKEmitterNode
         return node
     }
     
     func ca_dieOutInDuration(duration: NSTimeInterval) {
-        var firstWait : SKAction = SKAction.waitForDuration(duration)
+        let firstWait : SKAction = SKAction.waitForDuration(duration)
         weak var weakSelf : SKEmitterNode? = self
-        var stop : SKAction = SKAction.runBlock({() -> Void in
+        let stop : SKAction = SKAction.runBlock({() -> Void in
             weakSelf!.particleBirthRate = 0
         })
-        var secondWait : SKAction = SKAction.waitForDuration(NSTimeInterval(weakSelf!.particleLifetime))
-        var remove : SKAction = SKAction.removeFromParent()
-        var dieOut : SKAction = SKAction.sequence([firstWait, stop, secondWait, remove])
+        let secondWait : SKAction = SKAction.waitForDuration(NSTimeInterval(weakSelf!.particleLifetime))
+        let remove : SKAction = SKAction.removeFromParent()
+        let dieOut : SKAction = SKAction.sequence([firstWait, stop, secondWait, remove])
         weakSelf!.runAction(dieOut)
     }
 }

@@ -11,7 +11,7 @@ import SpriteKit
 class GameOverNode : SKNode {
     override init() {
         super.init()
-            var label : SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Heavy")
+            let label : SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Heavy")
             label.fontSize = 32
             label.fontColor = SKColor.whiteColor()
             label.text = "Game Over"
@@ -21,12 +21,12 @@ class GameOverNode : SKNode {
             label.xScale = 0.2;
             label.yScale = 0.2;
             
-            var fadeIn : SKAction = SKAction.fadeAlphaTo(1, duration: 2)
-            var scaleIn : SKAction = SKAction.scaleTo(1, duration: 2)
-            var fadeAndScale : SKAction = SKAction.sequence([fadeIn, scaleIn])
+            let fadeIn : SKAction = SKAction.fadeAlphaTo(1, duration: 2)
+            let scaleIn : SKAction = SKAction.scaleTo(1, duration: 2)
+            let fadeAndScale : SKAction = SKAction.sequence([fadeIn, scaleIn])
             label.runAction(fadeAndScale)
             
-            var instructions : SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Medium")
+            let instructions : SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Medium")
             instructions.fontSize = 14
             instructions.fontColor = SKColor.whiteColor()
             instructions.text = "Tap to try again."
@@ -34,11 +34,11 @@ class GameOverNode : SKNode {
             self.addChild(instructions)
             
             instructions.alpha = 0;
-            var wait : SKAction = SKAction.waitForDuration(4)
-            var appear : SKAction = SKAction.fadeAlphaTo(1, duration: 0.2)
-            var popUp : SKAction = SKAction.scaleTo(1.1, duration: 0.1)
-            var dropDown : SKAction = SKAction.scaleTo(1, duration: 0.1)
-            var pauseAndAppear : SKAction = SKAction.sequence([wait, appear, popUp, dropDown])
+            let wait : SKAction = SKAction.waitForDuration(4)
+            let appear : SKAction = SKAction.fadeAlphaTo(1, duration: 0.2)
+            let popUp : SKAction = SKAction.scaleTo(1.1, duration: 0.1)
+            let dropDown : SKAction = SKAction.scaleTo(1, duration: 0.1)
+            let pauseAndAppear : SKAction = SKAction.sequence([wait, appear, popUp, dropDown])
 
             instructions.runAction(pauseAndAppear)
     }
